@@ -1,8 +1,16 @@
 import streamlit as st
+import pickle
 
-st.title("web app")
+st.title("flower CLassification App")
 
-st.write("*****************************")
+filename = "lr_model.pkl"
+lr_model = joblib.load(path.join("model", filename))
 
-x= st.slider("x",min_value=10,max_value=200)
-st.title("{} squared is {}".format(x,x**2))
+sl = st.number_input("Insert a sepel length")
+sw = st.number_input("Insert a sepel width")
+pl = st.number_input("Insert a petal length")
+pw = st.number_input("Insert a petal width")
+
+if st.button("Predict"):
+    pred = lr_model.predict(np.array([[sl, sw, pl, pw]]))
+    st.write("The flower is :", pred[0])
