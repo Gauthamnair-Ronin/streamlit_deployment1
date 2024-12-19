@@ -1,6 +1,6 @@
 import streamlit as st
 import pickle
-
+import joblib
 st.title("flower CLassification App")
 
 filename = "lr_model.pkl"
